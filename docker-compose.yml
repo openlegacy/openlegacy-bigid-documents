@@ -1,0 +1,52 @@
+version: '3'
+services:
+  nocode-bigid:
+    image: openlegacy/nocode-bigid:<tag>
+    container_name: nocode-bigid
+    restart: always
+    ports:
+      - 8080:8080
+    # volumes:
+    #   - <PATH_TO_OPZ_FILE_LOCAL>:<PATH_TO_OPZ_FILE_REMOTE>
+    # for mtls:
+    #  - ./keystore.p12:/override.keystore.p12
+    #  - ./truststore.p12:/override.truststore.p12
+    environment:
+      # OL HUB Params
+      - OL_HUB_API_KEY=<API_KEY>
+      - OL_HUB_PROJECT_NAME=<PROJECT_NAME>
+      - OL_CORE_LICENSE_KEY=<LICENSE_KEY>
+      # OL_SOURCE_PROVIDER default value is HUB in case of OPZ use OL_PROJECT_ZIP
+      # - OL_SOURCE_PROVIDER=OL_PROJECT_ZIP
+      # OL_HUB_URL default value is pointing to OL Hub - https://api.ol-hub.com
+      # - OL_HUB_URL=<HUB_URL>
+      # - OL_PROJECT_ZIP_PATH=<PATH_TO_OPZ_FILE>
+      # Use UUID
+      # - RANDOM_ID=true
+      # Global FTP Params
+      # - GLOBAL_USER=user
+      # - GLOBAL_PASSWORD=password
+      # - SSL_ENABLE=false
+      # - SSL_PROTOCOL=TLS
+      # - SSL_IMPLICIT=false
+      # JCL Params
+      # - JOB_CARD='OL5TEST1  JOB  A123,'CICS COBOL',CLASS=A,MSGCLASS=H,NOTIFY=&SYSUID'
+      # - VAR0=''
+      # - FILE_NAME='OUT1'
+      # - HLQ='BATCON'
+      # - CUSTID='CN8HD631'
+      # - VERSION='V0000001'
+      # - INC='&HLQ..&VERSION..INCLUDES"'
+      # - FILE_PARAM='&HLQ..&VERSION..&CUSTID..FILEPARM"'
+      # SPRING-BOOT SSL
+      # - SERVER_SSL_ENABLED=true
+      # - SERVER_SSL_KEY_STORE=/override.keystore.p12
+      # - SERVER_SSL_KEY_STORE_PASSWORD=password
+      # - SERVER_SSL_KEY_STORE_TYPE=PKCS12
+      # - SERVER_SSL_TRUST_STORE=/override.truststore.p12
+      # - SERVER_SSL_TRUST_STORE_PASSWORD=password
+      # - SERVER_SSL_TRUST_STORE_TYPE=PKCS12
+      # - SERVER_SSL_CLIENT_AUTH=need
+      # - SERVER_SSL_PROTOCOL=TLSv1.2
+      # Log Level:
+      # - DEBUG_LEVEL=debug
