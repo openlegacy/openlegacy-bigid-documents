@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nocode.fullname" . }}
+  labels:
+    {{- include "nocode.labels" . | nindent 4 }}
+  {{- with .Values.srvAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}  
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.deployment.containerPort }}
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "nocode.selectorLabels" . | nindent 4 }}

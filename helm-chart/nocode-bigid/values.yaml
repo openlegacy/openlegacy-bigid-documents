@@ -1,0 +1,145 @@
+# Default values for ol-cloud.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: openlegacy/nocode-bigid
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "2.0.4"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+imageCredentials:
+  # name: ol-dockerhub
+  registry: "https://index.docker.io/v1/"
+  # username: ""
+  # password: ""
+
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+srvAnnotations: {}
+
+podAnnotations: {}
+# annotation1: annotation-value-1
+# annotation1: annotation-value-2
+
+podSecurityContext: {}
+# fsGroup: 2000
+
+deployment:
+  containerPort: 8080
+  healthPath: "/actuator/health"
+
+livenessProbe:
+  initialDelaySeconds: 20
+  timeoutSeconds: 5
+  periodSeconds: 15
+  successThreshold: 1
+  failureThreshold: 3
+readinessProbe:
+  initialDelaySeconds: 20
+  timeoutSeconds: 3
+  periodSeconds: 10
+  successThreshold: 1
+  failureThreshold: 3
+
+securityContext: {}
+# capabilities:
+#   drop:
+#   - ALL
+# readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/client-body-buffer-size: 32m
+    nginx.ingress.kubernetes.io/proxy-body-size: 32m
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: 60s
+    nginx.ingress.kubernetes.io/proxy-read-timeout: 60s
+    nginx.ingress.kubernetes.io/proxy-send-timeout: 60s
+    ingress.kubernetes.io/proxy-body-size: 5g
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: nocode.local
+      paths:
+        - path: /  
+          pathType: Prefix
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+envData:
+  # OL HUB Params
+  OL_HUB_API_KEY: api_key
+  OL_HUB_PROJECT_NAME: bigid
+  OL_CORE_LICENSE_KEY: license
+  # OL_SOURCE_PROVIDER default value is HUB in case of OPZ use OL_PROJECT_ZIP
+  #  OL_SOURCE_PROVIDER: OL_PROJECT_ZIP
+  # OL_HUB_URL default value is pointing to OL Hub - <https://api.ol-hub.com>
+  # OL_HUB_URL: <HUB_URL>
+  # OL_PROJECT_ZIP_PATH: <PATH_TO_OPZ_FILE>
+  # Global FTP Params
+  # GLOBAL_USER: user
+  # GLOBAL_PASSWORD: password
+  # SSL_ENABLE: false
+  # SSL_PROTOCOL: TLS
+  # SSL_IMPLICIT: false
+  # JCL Params
+  # JOB_CARD: 'OL5TEST1  JOB  A123,'CICS COBOL',CLASS=A,MSGCLASS=H,NOTIFY=&SYSUID'
+  # VAR0: ''
+  # FILE_NAME: 'OUT1'
+  # HLQ: 'BATCON'
+  # CUSTID: 'CN8HD631'
+  # VERSION: 'V0000001'
+  # INC: '&HLQ..&VERSION..INCLUDES"'
+  # FILE_PARAM: '&HLQ..&VERSION..&CUSTID..FILEPARM"'
+
+
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  limits:
+    cpu: 300m
+    memory: 800Mi
+  requests:
+    cpu: 10m
+    memory: 300Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  stabilizationWindowSeconds:
+    scaleUp: 60
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

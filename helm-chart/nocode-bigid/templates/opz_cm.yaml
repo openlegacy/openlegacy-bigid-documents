@@ -1,0 +1,15 @@
+{{- if (.Files.Glob "files/*.opz") }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "nocode.fullname" . }}-config
+  labels:
+    {{- include "nocode.labels" . | nindent 4 }}
+{{- if (.Files.Glob "files/*.opz") }}
+binaryData:
+{{- $root := . }}
+{{- range $path, $bytes := .Files.Glob "files/*.opz" }}
+  {{ base $path }}: {{ $root.Files.Get $path | b64enc | quote }}
+{{- end }}
+{{- end }}
+{{ end }}
