@@ -1,0 +1,5 @@
+//SYSIN     DD   *,SYMBOLS=EXECSYS                    UTILI INPUT
+    OPTION COPY
+    INCLUDE COND=(1,6,CH,LT,C'&V00')
+    OUTFIL FNAMES=(OUT1)
+/*

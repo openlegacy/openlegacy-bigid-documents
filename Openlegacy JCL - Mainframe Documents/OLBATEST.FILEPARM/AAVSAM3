@@ -1,0 +1,11 @@
+// EXPORT SYMLIST=(F00,F01,F02,F03,F04,F05,F06,F07,F08,F09)
+// SET F00='OLS0005.AAVSAM3'                               DSN        .
+// SET F01=&HLQ                                            HLQ OUTPUT .
+// SET F02='OL'                                            LLQ OUTPUT .
+// SET F03='VB'                                            FB/VB      .
+// SET F04='TRK'                                           CYL OR TRK .
+// SET F05='5'                                             PRIMARY    .
+// SET F06='5'                                             SECONDARY  .
+// SET F07='154'                                           LRECL      .
+// SET F08='27998'                                         BLKSIZE    .
+// SET F09='VPLRG1'                                        VOLSER     .
