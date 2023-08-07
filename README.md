@@ -71,34 +71,33 @@ Global FTP Params
 
 | Name | Type | Default Value | Description | Required |
 | ------------- |:-------------:| :-------------:| :-------------:| :-------------:|
-| OVERRIDE     | Boolean  | | Used in order to override connections params with the ones below  | false|
+| OVERRIDE     | Boolean  | | Use to override connections params with the ones below  | false|
 | GLOBAL_USER     | String     | | FTP user| false
 | GLOBAL_PASSWORD     | String     | |FTP Password| false|
-| SSL_ENABLE     | Boolean     |  | Enable Secure FTP| false|
-| SSL_PROTOCOL     | String    | | Set the TLS protocol| false|
-| SSL_IMPLICIT     | Boolean    |  | Enable Implicit FTP| false|
-| JOB_CARD     | String     | | The JCL Job Card to submit| false|
-| VAR0     | String     | | | false|
-| FILE_NAME     | String     | | OUT1| false|
-| HLQ     | String     | | BATCON| false|
-| CUSTID     | String     | | CN8HD631| false|
-| VERSION     | String     | | V0000001| false|
-| INC     | String     | | &HLQ..&VERSION..INCLUDES| false|
-| FILE_PARAM     | String     | | &HLQ..&VERSION..INCLUDES| false|
-| GLOBAL_USER     | String     | | | false|
+| SSL_ENABLE     | Boolean     | false | Enable Secure FTP| false|
+| SSL_PROTOCOL     | String    | TLS | Set the TLS protocol| false|
+| SSL_IMPLICIT     | Boolean    | false | Enable Implicit FTP| false|
+| JOB_CARD     | String     | OL5TEST1  JOB  A123,'CICS COBOL',CLASS=A,MSGCLASS=H,NOTIFY=&SYSUID | The JCL Job Card to submit| false|
+| VAR0     | String     | ''| | false|
+| FILE_NAME     | String     |OUT1| | false|
+| HLQ     | String     | BATCON| | false|
+| CUSTID     | String     |CN8HD631 | | false|
+| VERSION     | String     | V0000001 | | false|
+| INC     | String     | &HLQ..&VERSION..INCLUDES || false|
+| FILE_PARAM     | String     | &HLQ..&VERSION..INCLUDES | | false|
 
 ---
 Functional Params
 
 | Name | Type | Default Value | Description | Required |
 | ------------- |:-------------:| :-------------:| :-------------:| :-------------:|
-| RANDOM_ID     | Boolean  | | Use UUID for each record in the BigID scanner  | false|
-| RECORD_ID_START_POS     | Int     | | Default Records ID start position(in cases we don't use UUID)| false
-| RECORD_ID_LENGTH     | Int     | |Default Records ID length(in cases we don't use UUID)| false|
-| WITH_METADATA     | Boolean     |  | Return additional records metadata in the BigID Structured Scan (VSAM connector)| false|
-| METADATA_ONLY     | Boolean    | | Return ONLY records metadata  in the BigID Structured Scan (VSAM connector)| false|
-| RECORD_READ_OFFSET     | Int    |  | First Record position in the VSAM file (used in the unstructured generic API)| false|
-| RECORD_READ_LIMIT     | Int    |  | The number of records to scan in the VSAM file (used in the unstructured generic API)| false|
+| RANDOM_ID     | Boolean  | false | Use UUID for each record in the BigID scanner  | false|
+| RECORD_ID_START_POS     | Int     | 0 | Default Records ID start position(in cases we don't use UUID)| false
+| RECORD_ID_LENGTH     | Int     | 16 |Default Records ID length(in cases we don't use UUID)| false|
+| WITH_METADATA     | Boolean     | true | Return additional records metadata in the BigID Structured Scan (VSAM connector)| false|
+| METADATA_ONLY     | Boolean    | false | Return ONLY records metadata  in the BigID Structured Scan (VSAM connector)| false|
+| RECORD_READ_OFFSET     | Int    | 0 | First Record position in the VSAM file (used in the unstructured generic API)| false|
+| RECORD_READ_LIMIT     | Int    | 50000 | The number of records to scan in the VSAM file (used in the unstructured generic API)| false|
 
 
       
