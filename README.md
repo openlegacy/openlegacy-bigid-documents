@@ -52,3 +52,53 @@ ingress:
     - path: /
       pathType: Prefix
 ```
+
+## List of Supported Environment Variables:
+
+OL HUB Params:
+
+| Name | Type | Default Value | Description | Required |
+| ------------- |:-------------:| :-------------:| :-------------:| :-------------:|
+| OL_HUB_API_KEY     | String     | | OpenLegacy Hub API Key | true|
+| OL_HUB_PROJECT_NAME     | String    | |OpenLegacyHub Project Name| true|
+| OL_CORE_LICENSE_KEY     | String     | |OpenLegacyHub License String | true|
+| OL_SOURCE_PROVIDER     | String     | HUB|  In case of OPZ use OL_PROJECT_ZIP  | false|
+| OL_HUB_URL     | String    |  https://api.ol-hub.com| Public URL of the deployed Hub Instance| false|
+| OL_PROJECT_ZIP_PATH     | String    |  | <PATH_TO_OPZ_FILE> inside the container| true ONLY when using OPZ|
+
+---
+Global FTP Params
+
+| Name | Type | Default Value | Description | Required |
+| ------------- |:-------------:| :-------------:| :-------------:| :-------------:|
+| OVERRIDE     | Boolean  | | Used in order to override connections params with the ones below  | false|
+| GLOBAL_USER     | String     | | FTP user| false
+| GLOBAL_PASSWORD     | String     | |FTP Password| false|
+| SSL_ENABLE     | Boolean     |  | Enable Secure FTP| false|
+| SSL_PROTOCOL     | String    | | Set the TLS protocol| false|
+| SSL_IMPLICIT     | Boolean    |  | Enable Implicit FTP| false|
+| JOB_CARD     | String     | | The JCL Job Card to submit| false|
+| VAR0     | String     | | | false|
+| FILE_NAME     | String     | | OUT1| false|
+| HLQ     | String     | | BATCON| false|
+| CUSTID     | String     | | CN8HD631| false|
+| VERSION     | String     | | V0000001| false|
+| INC     | String     | | &HLQ..&VERSION..INCLUDES| false|
+| FILE_PARAM     | String     | | &HLQ..&VERSION..INCLUDES| false|
+| GLOBAL_USER     | String     | | | false|
+
+---
+Functional Params
+
+| Name | Type | Default Value | Description | Required |
+| ------------- |:-------------:| :-------------:| :-------------:| :-------------:|
+| RANDOM_ID     | Boolean  | | Use UUID for each record in the BigID scanner  | false|
+| RECORD_ID_START_POS     | Int     | | Default Records ID start position(in cases we don't use UUID)| false
+| RECORD_ID_LENGTH     | Int     | |Default Records ID length(in cases we don't use UUID)| false|
+| WITH_METADATA     | Boolean     |  | Return additional records metadata in the BigID Structured Scan (VSAM connector)| false|
+| METADATA_ONLY     | Boolean    | | Return ONLY records metadata  in the BigID Structured Scan (VSAM connector)| false|
+| RECORD_READ_OFFSET     | Int    |  | First Record position in the VSAM file (used in the unstructured generic API)| false|
+| RECORD_READ_LIMIT     | Int    |  | The number of records to scan in the VSAM file (used in the unstructured generic API)| false|
+
+
+      
