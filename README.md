@@ -91,6 +91,7 @@ Functional Params
 
 | Name | Type | Default Value | Description | Required |
 | ------------- |:-------------:| :-------------:| :-------------:| :-------------:|
+| DEBUG_LEVEL     | String    | info | Sets the OpenLegacy Connector Log Level| false|
 | RANDOM_ID     | Boolean  | false | Use UUID for each record in the BigID scanner  | false|
 | RECORD_ID_START_POS     | Int     | 0 | Default Records ID start position(in cases we don't use UUID)| false
 | RECORD_ID_LENGTH     | Int     | 16 |Default Records ID length(in cases we don't use UUID)| false|
