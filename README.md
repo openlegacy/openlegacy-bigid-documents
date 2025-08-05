@@ -101,4 +101,5 @@ Functional Params
 | RECORD_READ_LIMIT     | Int    | 50000 | The number of records to scan in the VSAM file (used in the unstructured generic API)| false|
 
 
-      
+## Utilities
+- [Fileparm to module configuration](fileparm-to-module.html)
